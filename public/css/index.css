@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100%;
+}
+.brand{
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.brand img{
+    height: 10vh;
+    width: 8.5vw;
+    box-shadow: 4px 4px 5px black;
+    margin: 1vh 1.5vw;
+    background-color: #93dada;
+}
+.brand h3{
+    font-size: 1.7em;
+    color: white;
+    text-shadow: 4px 4px 3px black;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.join{
+    background-color: #4ab4b4;
+    height: 100vh;
+    width: 50%;
+    float: left;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-content: space-between;
+    border-right: 2px solid black;
+    /* flex-wrap: wrap; */
+}
+.create{
+    background-color: #11a9a9;
+    height: 100vh;
+    width: 50%;
+    float: right;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-content: flex-end;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+.create img{
+    height: 100%;
+    width: 100%;
+}
+.joinform{
+    margin-left: 4vw;
+    height: 65%;
+}
+.joinform h1{
+    font-size: 3em;
+    color: white;
+    text-shadow: 4px 4px 3px black;
+    margin-bottom: 4vh;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.joinform input,select{
+    height: 4vh;
+    width: 15vw;
+    margin: 8px;
+    padding: 5px;
+    border: 2px solid rgb(188, 185, 185);
+    border-radius: 5px;
+    box-shadow: 4px 4px 5px black;
+}
+.joinform button{
+    padding: 0.5vh 0.7vw;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 8px;
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 4px 4px 5px black;
+}
+
+/* media query */
+@media only screen and (max-width: 600px) {
+    .joinform h1{
+        font-size: 30px;
+    }
+    .joinform input{
+        width: 35vw;
+    }
+}

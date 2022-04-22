@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChitChat</title>
+    <link rel="stylesheet" href="/css/chat.css">
+    <script src="https://kit.fontawesome.com/0d48b989c8.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="chatbox">
+        <div class="top">
+            <div class="brand">
+                <img src="chitchat_logo.png" alt="logo">
+                <h3>Chit Chat</h3>
+            </div>
+            <div class="leave">
+                <a href="index.html" class="btn">Leave Room</a>
+            </div>
+        </div>
+
+        <main>
+            <div class="sidebar">
+                <h3><i class="fas fa-comments"></i> Room Name:</h3>
+                <h2 id="room"></h2>
+                <h3><i class="fas fa-users"></i> Users</h3>
+                <ul id="users"></ul>
+            </div>
+
+            <div class="chatarea">
+                <div class="message left">
+                    <p class="meta">Brad <span>9:12pm</span></p>
+                    <p class="text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi,
+                        repudiandae.
+                    </p>
+                </div>
+                <div class="centre">
+                    <p>user joined the chat room</p>
+                </div>
+                <div class="message right">
+                    <p class="meta">Mary <span>9:15pm</span></p>
+                    <p class="text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi,
+                        repudiandae.
+                    </p>
+                </div>
+            </div>
+        </main>
+
+        <div class="bottom">
+            <form id="msgbox">
+                <input
+                  id="msg"
+                  type="text"
+                  placeholder="Enter Message"
+                  required
+                />
+                <button class="btn"><i class="fas fa-paper-plane"></i> Send</button>
+              </form>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.10.3/qs.min.js" integrity="sha512-juaCj8zi594KHQqb92foyp87mCSriYjw3BcTHaXsAn4pEB1YWh+z+XQScMxIxzsjfM4BeVFV3Ij113lIjWiC2w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
