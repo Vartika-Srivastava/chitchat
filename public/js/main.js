@@ -4,11 +4,10 @@ const cArea = document.querySelector('.chatarea');
 const rname = document.getElementById('room');
 const usrs = document.getElementById('users');
 
+// extracting username and room from url
 const {username, room} = Qs.parse(location.search, {
     ignoreQueryPrefix: true
 })
-
-console.log(username,room);
 
 const socket = io();
 
@@ -20,21 +19,15 @@ socket.on('roomUsers', ({room,users}) => {
 })
 
 // message from server
-socket.on('message', message => {
-    console.log(message)
-    outputMsg(message,'left');
+socket.on('chatMsg', (message) => {
+    appendMsg(message,'left');
 });
 
 socket.on('update', message => {
-    outputMsg(message,'centre');
-    console.log(message)
+    appendMsg(message,'centre');
 });
 
-// socket.on('receive', message => {
-//     console.log(message)
-//     outputMsg(message,'left');
-// });
-
+//  getting msg from frontend
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -44,22 +37,39 @@ form.addEventListener('submit', (e) => {
     if (!msg) {
         return false;
     }
-    // outputMsg(msg,'right');
-    // socket.emit('send', msg);
-    // console.log(msg);
 
-    socket.emit('chatMsg', msg);
+    sendMsg(msg);
 
     msgInp.value = '';
-    msgInp.focus();
+    msgInp.focus();    
 });
 
-function outputMsg(message, pos) {
+// formatting msg
+function sendMsg(msg){
+    const current = new Date();
+    let msgObj = {
+        uname: username,
+        text: msg,
+        time: current.toLocaleTimeString("en-US", {
+            hour: "2-digit",
+            minute: "2-digit",
+          })
+    }
+    console.log(msgObj);
+    appendMsg(msgObj,'right');
+    
+    // send to server
+    socket.emit('chatMsg', msgObj);
+
+}
+
+// add msg
+function appendMsg(message, pos) {
     const div = document.createElement('div');
     if(pos == 'centre'){
         div.classList.add('centre');
         div.innerHTML = `<p class="text">${message}</p>`;
-        // console.log(message,pos)
+        
     }else{
         div.classList.add('message');
         div.classList.add(pos);

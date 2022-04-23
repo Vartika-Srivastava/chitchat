@@ -5,18 +5,15 @@ const server = http.createServer(app);
 const socketio = require('socket.io');
 const io = socketio(server);
 const path = require('path');
-const formatMessage = require('./utils/messages');
 const { userJoin, getCrntUser, userLeave, roomUsers } = require('./utils/users');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.get('/', (req,res)=>{
-//     res.sendFile("index");
-// })
-
 io.on('connection', socket => {
+    // user joins
     socket.on('joinRoom', ({username, room}) => {
         const user = userJoin(socket.id, username, room);
+
         socket.join(user.room);
 
         socket.emit('update','Welcome in ChitChat Room');
@@ -29,17 +26,13 @@ io.on('connection', socket => {
         });
     });
 
-    // socket.on('send',(msg) => {
-    //     const user = getCrntUser(socket.id);
-    //     socket.broadcast.to(user.room).emit('receive',formatMessage(user.username,msg));
-    // })
-
     // listen for chat message
     socket.on('chatMsg', (msg) => {
         const user = getCrntUser(socket.id);
-        io.to(user.room).emit('message',formatMessage(user.username,msg))
+        socket.broadcast.to(user.room).emit('chatMsg',msg)
     });
 
+    // user diconnects / leaves the room
     socket.on('disconnect', () => {
         const user = userLeave(socket.id);
         if(user){

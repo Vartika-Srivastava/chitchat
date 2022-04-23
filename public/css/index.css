@@ -35,23 +35,7 @@ body{
     flex-direction: column;
     align-content: space-between;
     border-right: 2px solid black;
-    /* flex-wrap: wrap; */
-}
-.create{
-    background-color: #11a9a9;
-    height: 100vh;
-    width: 50%;
-    float: right;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    align-content: flex-end;
-    align-items: flex-end;
-    flex-wrap: wrap;
-}
-.create img{
-    height: 100%;
-    width: 100%;
+    /* flex-wrap: wrap; #11a9a9*/
 }
 .joinform{
     margin-left: 4vw;
